@@ -2,9 +2,9 @@ const { exec } = require('child_process');
 const { request } = require('axios');
 const waitPort = require('wait-port');
 const path = require('path');
-const { expect, assert, should } = require('chai')
+const { expect } = require('chai');
 
-const functionPath = path.resolve(__dirname, '../examples/simple-authorization-function')
+const functionPath = path.resolve(__dirname, '../examples/simple-authorization-function');
 const PORT = 8888;
 const BASE_URL = `http://localhost:${PORT}`;
 

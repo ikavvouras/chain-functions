@@ -2,9 +2,9 @@ const { exec } = require('child_process');
 const { request } = require('axios');
 const waitPort = require('wait-port');
 const path = require('path');
-const { expect } = require('chai')
+const { expect } = require('chai');
 
-const functionPath = path.resolve(__dirname, '../examples/simple-cors-function')
+const functionPath = path.resolve(__dirname, '../examples/simple-cors-function');
 const PORT = 8888;
 const BASE_URL = `http://localhost:${PORT}`;
 
