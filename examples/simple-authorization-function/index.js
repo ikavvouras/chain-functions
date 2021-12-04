@@ -21,4 +21,4 @@ function helloWorldFunction(req, res) {
   res.send(`Hello ${(req.query.name || req.body.name || 'World')}!`);
 }
 
-exports.helloWorld = simpleFunction(cors(), authorizationFilter, helloWorldFunction);
+exports.authFunction = simpleFunction(cors(), authorizationFilter, helloWorldFunction);

@@ -1,23 +1,23 @@
-const { exec } = require('child_process');
 const { request } = require('axios');
-const waitPort = require('wait-port');
 const path = require('path');
 const { expect } = require('chai');
+const { start, kill } = require('./function-utils');
 
 const functionPath = path.resolve(__dirname, '../examples/simple-authorization-function');
 const PORT = 8888;
 const BASE_URL = `http://localhost:${PORT}`;
 
 describe('simple-authorization-function', () => {
+  let ffProc;
 
-  before(async () => {
-    this.ffProc = exec(
-      `npx functions-framework --target=helloWorld --signature-type=http --port=${PORT} --source=${functionPath}`
-    );
-    await waitPort({ host: 'localhost', port: PORT });
+  before(async function () {
+    this.timeout(10000);
+    ffProc = await start('authFunction', functionPath, PORT);
   });
 
-  after(() => this.ffProc.kill());
+  after(async () => {
+    await kill(ffProc);
+  });
 
   it('should return hello world', async () => {
     const response = await request({

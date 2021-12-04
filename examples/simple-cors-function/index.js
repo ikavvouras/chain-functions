@@ -5,4 +5,4 @@ function helloWorldFunction(req, res) {
   res.send(`Hello ${(req.query.name || req.body.name || 'World')}!`);
 }
 
-exports.helloWorld = simpleFunction(cors(), helloWorldFunction);
+exports.corsFunction = simpleFunction(cors(), helloWorldFunction);
